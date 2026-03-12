@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Card Thermal - STE ISSAM LUXURY</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Dashboard Sidebar -->
+        <aside class="sidebar no-print">
+            <div class="brand">
+                <span class="luxury-logo">ISSAM LUXURY</span>
+                <p class="tagline">OPTIMISÉ POUR IMPRIMANTE THERMIQUE</p>
+            </div>
+
+            <div class="controls-section">
+                <h3>Identité</h3>
+                <div class="input-group">
+                    <label for="card-name">Nom Complet</label>
+                    <input type="text" id="card-name" placeholder="ex: Issam Benali">
+                </div>
+                <div class="input-group">
+                    <label for="card-title">Fonction / Titre</label>
+                    <input type="text" id="card-title" placeholder="ex: Directeur Général">
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <h3>Coordonnées</h3>
+                <div class="input-group">
+                    <label for="card-phone">WhatsApp / Tél</label>
+                    <input type="text" id="card-phone" placeholder="+212 6 XX XX XX XX">
+                </div>
+                <div class="input-group">
+                    <label for="card-email">Email</label>
+                    <input type="text" id="card-email" placeholder="contact@issam-luxury.ma">
+                </div>
+                <div class="input-group">
+                    <label for="card-address">Localisation</label>
+                    <input type="text" id="card-address" placeholder="Ville, Maroc">
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <h3>Lien QR Code</h3>
+                <div class="input-group">
+                    <label for="qr-data">Lien (Web ou WhatsApp)</label>
+                    <input type="text" id="qr-data" placeholder="https://issam-luxury.ma">
+                </div>
+            </div>
+
+            <div class="actions-section no-print">
+                <button id="save-btn" class="btn-save">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    ENREGISTRER
+                </button>
+                <button id="print-btn" class="btn-success">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 9V2h12v7"></path>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    IMPRIMER LA CARTE
+                </button>
+            </div>
+        </aside>
+
+        <!-- Preview Area -->
+        <main class="preview-area">
+            <div id="card-preview" class="thermal-card">
+                <div class="card-inner">
+                    <header>
+                        <div class="company-brand">STE ISSAM LUXURY</div>
+                        <div class="company-suffix">SARL AU</div>
+                    </header>
+
+                    <div class="divider-thick"></div>
+
+                    <div class="person-info">
+                        <h1 id="display-name" class="person-name">ISSAM ZAKI</h1>
+                        <p id="display-title" class="person-title">LOCATION DE VOITURES DE LUXE</p>
+                    </div>
+
+                    <div class="contact-details">
+                        <p id="display-phone">Tél: +212 689-336665 / +212 668-687959</p>
+                        <p id="display-email">Email: contact@issam-luxury.ma</p>
+                        <p id="display-address">Adresse: ROUTE MARRAKECH AZILAL STATION ZIZ</p>
+                    </div>
+
+                    <div class="card-footer">
+                        <div id="qrcode-container"></div>
+                        <div class="tear-line">Détacher Ici • STE ISSAM LUXURY</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+:root {
+    --bg-color: #0d1117;
+    --sidebar-bg: #161b22;
+    --text-main: #c9d1d9;
+    --accent-gold: #e3b341;
+    --border-color: #30363d;
+    --input-bg: #0d1117;
+    --card-width: 80mm;
+    /* Standard Thermal Printer Width */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 380px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    overflow-y: auto;
+}
+
+.luxury-logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent-gold);
+}
+
+.tagline {
+    font-size: 0.75rem;
+    color: #8b949e;
+    margin-top: 0.5rem;
+}
+
+.controls-section h3 {
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.input-group label {
+    font-size: 0.7rem;
+    color: #8b949e;
+}
+
+.input-group input {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    padding: 0.7rem;
+    border-radius: 4px;
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+/* Preview Area */
+.preview-area {
+    flex: 1;
+    background-color: #0d1117;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 1rem;
+    overflow-y: auto;
+}
+
+.thermal-card {
+    width: var(--card-width);
+    background-color: white;
+    color: black;
+    padding: 5mm;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    min-height: 120mm;
+    /* Taller for vertical thermal layout */
+    border: 1px dashed #ccc;
+}
+
+.card-inner {
+    border: 3px solid black;
+    padding: 10mm 5mm;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.company-brand {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin-bottom: 2mm;
+}
+
+.company-suffix {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 5mm;
+}
+
+.divider-thick {
+    height: 2px;
+    background: black;
+    width: 80%;
+    margin: 5mm 0;
+}
+
+.person-info {
+    margin: 5mm 0;
+}
+
+.person-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 1mm;
+}
+
+.person-title {
+    font-size: 1rem;
+    font-weight: 600;
+    font-style: italic;
+    color: #333;
+}
+
+.contact-details {
+    margin-top: 8mm;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+.card-footer {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5mm;
+}
+
+#qrcode-container img {
+    width: 30mm;
+    height: 30mm;
+    /* Thermal printers love clear QR codes */
+}
+
+.tear-line {
+    border-top: 2px dotted black;
+    width: 100%;
+    margin-top: 10mm;
+    padding-top: 2mm;
+    font-size: 0.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #666;
+}
+
+/* Print Overrides - Optimized for Continuous Thermal Roll */
+@media print {
+    @page {
+        margin: 0;
+        size: auto;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        margin: 0;
+        padding: 0;
+        width: 80mm;
+        /* Standard width for thermal rolls */
+        height: auto;
+        overflow: visible;
+    }
+
+    .app-container {
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+
+    .preview-area {
+        padding: 0;
+        display: block;
+        background: transparent;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+    }
+
+    .thermal-card {
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        min-height: auto;
+        padding: 5mm;
+        margin: 0;
+        display: block;
+        height: auto;
+        overflow: visible;
+    }
+
+    .card-inner {
+        border: 4px solid black;
+        /* Thick bold border for thermal printers */
+        height: auto;
+        min-height: 120mm;
+        /* Longer vertical format for rolls */
+        display: flex;
+        flex-direction: column;
+        padding: 10mm 5mm;
+    }
+
+    .tear-line {
+        display: block;
+        border-top: 3px dotted black;
+        margin-top: 10mm;
+        padding-top: 5mm;
+    }
+}
+
+.actions-section {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.btn-save {
+    background-color: transparent;
+    border: 2px solid var(--accent-gold);
+    color: var(--accent-gold);
+    padding: 1rem;
+    border-radius: 6px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.btn-save:hover {
+    background-color: var(--accent-gold);
+    color: black;
+}
+
+.btn-success {
+    background-color: var(--accent-gold);
+    color: black;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: transform 0.1s;
+}
+
+.btn-success:active {
+    transform: scale(0.98);
+}
